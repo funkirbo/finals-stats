@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    body {
+        background-color: blanchedalmond;
+    }
+    h2, h3 {
+        font-family: 'Courier New', Courier, monospace;
+    }
+
+    h1 {
+        font-family: 'Courier New', Courier, monospace;
+        text-align: center;
+    }
+
+    p {
+        font-family: 'Courier New', Courier, monospace;
+    }
+
+    ul {
+        list-style-type: square;
+        border: 1px solid black;
+        margin: 3px;
+        padding: 10px;
+        list-style-position: inside;
+        background-color:cornsilk;
+    }
+
+    li {
+        font-family: 'Courier New', Courier, monospace;
+    }
+
+    select {
+        padding: 5px;
+        font-family: 'Courier New', Courier, monospace;
+    }
+
+    .selectcontainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .center {
+        text-align: center;
+    }
+
+    .statsborder {
+        border: 1px solid black;
+        background-color: burlywood;
+        padding: 5px;
+        margin: 10px;
+    }
+</style>
+<body>
+    <p class = "center"><a href = "/">home</a></p>
+    <h1>{{ playerstats[1] }}</h1>
+    {% set allmakes = makes | sum %}
+    {% set allmisses = misses | sum %}
+    {% if (allmakes + allmisses) == 0 %}
+        {% set shootingpercent = 0 %}
+    {% else %}
+        {% set shootingpercent = (allmakes / (allmakes + allmisses)) | round(3) %}
+    {% endif %}
+    {% if url == 1 %}
+        <div class = "selectcontainer">
+            <select id = "shotschoice" onchange = "reloadShots()">
+                <option selected value = "all">All shots</option>
+                <option value = "twos">Only two-pointers</option>
+                <option value = "threes">Only three-pointers</option>
+            </select>
+        </div>
+        <div class = "statsborder">
+            <h2 class = "center">Finals Stats</h2>
+            <p class = "center">FG%: {{ shootingpercent }}</p>
+            {% if (((shootingpercent - playerstats[27]) | round(3)) > 0) %}
+                <p class = "center">+{{ (shootingpercent - playerstats[27]) | round(3) }} from regular season</p>
+            {% else %}
+                <p class = "center">{{ (shootingpercent - playerstats[27]) | round(3) }} from regular season</p>
+            {% endif %}
+        </div>
+    {% elif url == 2 %}
+        <div class = "selectcontainer">
+            <select id = "shotschoice" onchange = "reloadShots()">
+                <option value = "all">All shots</option>
+                <option selected value = "twos">Only two-pointers</option>
+                <option value = "threes">Only three-pointers</option>
+            </select>
+        </div>
+        <div class = "statsborder">
+            <h2 class = "center">Finals Stats</h2>
+            <p class = "center">2-pt FG%: {{ shootingpercent }}</p>
+            {% if (((shootingpercent - playerstats[28]) | round(3)) > 0) %}
+                <p class = "center">+{{ (shootingpercent - playerstats[28]) | round(3) }} from regular season</p>
+            {% else %}
+                <p class = "center">{{ (shootingpercent - playerstats[28]) | round(3) }} from regular season</p>
+            {% endif %}
+        </div>
+    {% else %}
+        <div class = "selectcontainer">
+            <select id = "shotschoice" onchange = "reloadShots()">
+                <option value = "all">All shots</option>
+                <option value = "twos">Only two-pointers</option>
+                <option selected value = "threes">Only three-pointers</option>
+            </select>
+        </div>
+        <div class = "statsborder">
+            <h2 class = "center">Finals Stats</h2>
+            <p class = "center">3-pt FG%: {{ shootingpercent }}</p>
+            {% if (((shootingpercent - playerstats[29]) | round(3)) > 0) %}
+                <p class = "center">+{{ (shootingpercent - playerstats[29]) | round(3) }} from regular season</p>
+            {% else %}
+                <p class = "center">{{ (shootingpercent - playerstats[29]) | round(3) }} from regular season</p>
+            {% endif %}
+        </div>
+    {% endif %}
+    <h3>Game 1</h3>
+    {% if url == 1 %}
+        <p>FG%: {{ percent[0] }}</p>
+    {% elif url == 2 %}
+        <p>2-pt FG%: {{ percent[0] }}</p>
+    {% else %}
+        <p>3-pt FG%: {{ percent[0] }}</p>
+    {% endif %}
+    <ul id = "g1">
+        {% for item in allshots %}
+            {% if item[2] == "2026-06-03"%}
+                <li>{{ item[7] }} quarter - {{ item[8] }}, {{ item[10] }}</li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+
+    <h3>Game 2</h3>
+    {% if url == 1 %}
+        <p>FG%: {{ percent[1] }}</p>
+    {% elif url == 2 %}
+        <p>2-pt FG%: {{ percent[1] }}</p>
+    {% else %}
+        <p>3-pt FG%: {{ percent[1] }}</p>
+    {% endif %}
+    <ul id = "g2">
+        {% for item in allshots %}
+            {% if item[2] == "2026-06-05"%}
+                <li>{{ item[7] }} quarter - {{ item[8] }}, {{ item[10] }}</li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+
+    <h3>Game 3</h3>
+    {% if url == 1 %}
+        <p>FG%: {{ percent[2] }}</p>
+    {% elif url == 2 %}
+        <p>2-pt FG%: {{ percent[2] }}</p>
+    {% else %}
+        <p>3-pt FG%: {{ percent[2] }}</p>
+    {% endif %}
+    <ul id = "g3">
+        {% for item in allshots %}
+            {% if item[2] == "2026-06-08"%}
+                <li>{{ item[7] }} quarter - {{ item[8] }}, {{ item[10] }}</li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+
+    <h3>Game 4</h3>
+    {% if url == 1 %}
+        <p>FG%: {{ percent[3] }}</p>
+    {% elif url == 2 %}
+        <p>2-pt FG%: {{ percent[3] }}</p>
+    {% else %}
+        <p>3-pt FG%: {{ percent[3] }}</p>
+    {% endif %}
+    <ul id = "g4">
+        {% for item in allshots %}
+            {% if item[2] == "2026-06-10"%}
+                <li>{{ item[7] }} quarter - {{ item[8] }}, {{ item[10] }}</li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+
+    <h3>Game 5</h3>
+    {% if url == 1 %}
+        <p>FG%: {{ percent[4] }}</p>
+    {% elif url == 2 %}
+        <p>2-pt FG%: {{ percent[4] }}</p>
+    {% else %}
+        <p>3-pt FG%: {{ percent[4] }}</p>
+    {% endif %}
+    <ul id = "g5">
+        {% for item in allshots %} 
+            {% if item[2] == "2026-06-13"%}
+                <li>{{ item[7] }} quarter - {{ item[8] }}, {{ item[10] }}</li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</body>
+
+<script>
+
+    function reloadShots()
+    {
+        if (document.getElementById("shotschoice").value === "threes")
+        {
+            window.location.href = "/{{ playerid }}/threes";
+        }
+
+        else if (document.getElementById("shotschoice").value === "twos")
+        {
+            window.location.href = "/{{ playerid }}/twos";
+        }
+
+        else
+        {
+            window.location.href = "/{{ playerid }}";
+        }
+    }
+</script>
+
+</html>

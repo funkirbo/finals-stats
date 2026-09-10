@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+    <style>
+    body {
+        background-color: blanchedalmond;
+    }
+    h2, h3 {
+        font-family: 'Courier New', Courier, monospace;
+    }
+
+    h1 {
+        font-family: 'Courier New', Courier, monospace;
+        text-align: center;
+    }
+
+    p {
+        font-family: 'Courier New', Courier, monospace;
+    }
+
+    ul {
+        list-style-type: square;
+        border: 1px solid black;
+        margin: 3px;
+        padding: 10px;
+        list-style-position: inside;
+        background-color:cornsilk;
+    }
+
+    li {
+        font-family: 'Courier New', Courier, monospace;
+    }
+
+    select {
+        padding: 5px;
+        font-family: 'Courier New', Courier, monospace;
+    }
+
+    .selectcontainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .center {
+        text-align: center;
+    }
+
+    .statsborder {
+        border: 1px solid black;
+        background-color: burlywood;
+        padding: 5px;
+        margin: 10px;
+    }
+
+    .container {
+        display: flex;
+        gap: 10px;
+    }
+
+    .box {
+        flex: 1;
+        padding: 20px;
+        background-color:cornsilk;
+        border: 1px solid black;
+    }
+</style>
+<body>
+    <div class = "statsborder">
+        <h1>every shot of the 2025-26 NBA finals</h1>
+        <p class = "center">data taken from <a href="https://www.sports-reference.com/stathead/basketball/">Stathead</a></p>
+    </div>
+
+    <div class = "container">
+        <div class = "box">
+            <h1 class = "center">knicks</h1>
+            <ul style = "border: 0;">
+                <li><a href = "/alvarjo01">Jose Alvarado</a></li>
+                <li><a href = "/anunoog01">OG Anunoby</a></li>
+                <li><a href = "/bridgmi01">Mikal Bridges</a></li>
+                <li><a href = "/brunsja01">Jalen Brunson</a></li>
+                <li><a href = "/clarkjo01">Jordan Clarkson</a></li>
+                <li><a href = "/hartjo01">Josh Hart</a></li>
+                <li><a href = "/mcbrimi01">Miles McBride</a></li>
+                <li><a href = "/robinmi01">Mitchell Robinson</a></li>
+                <li><a href = "/shamela01">Landry Shamet</a></li>
+                <li><a href = "/sochaje01">Jeremy Sochan</a></li>
+                <li><a href = "/townska01">Karl-Anthony Towns</a></li>
+            </ul>
+        </div>
+        <div class = "box">
+            <h1 class = "center">spurs</h1>
+            <ul style = "border: 0;">
+                <li><a href = "/wembavi01">Victor Wembanyama</a></li>
+                <li><a href = "/kornelu01">Luke Kornet</a></li>
+                <li><a href = "/johnske04">Keldon Johnson</a></li>
+                <li><a href = "/foxde01">De'Aaron Fox</a></li>
+                <li><a href = "/champju02">Julian Champagnie</a></li>
+                <li><a href = "/castlst01">Stephon Castle</a></li>
+                <li><a href = "/vassede01">Devin Vassell</a></li>
+                <li><a href = "/barneha02">Harrison Barnes</a></li>
+                <li><a href = "/harpedy01">Dylan Harper</a></li>
+                <li><a href = "/bryanca01">Carter Bryant</a></li>
+            </ul>
+        </div>
+    </div>
+    <p class = "center">created using SQLite, Flask, Python, hopes, and dreams</p>
+    <p class = "center">i'm not a graphic designer, how could you tell?</p>
+</body>
+</html>
